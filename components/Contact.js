@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Contact() {
   const [userData, setUserData] = useState(null);
@@ -84,12 +85,12 @@ export default function Contact() {
               {contacts.map((contact, index) => (
                 <li key={index}>
                   {contact.name} —{" "}
-                  <a
+                  <Link
                     href={`tel:${contact.phone}`}
                     className="text-blue-600 underline"
                   >
                     {contact.phone}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -107,21 +108,21 @@ export default function Contact() {
 
         {/* Emergency Call Button */}
         <div className="text-center">
-          <a
+          <Link
             href="tel:112"
             className="inline-block w-full bg-red-600 text-white font-bold py-3 rounded-lg hover:bg-red-700"
           >
             Call Emergency 112
-          </a>
+          </Link>
         </div>
       </main>
 
       <footer className="p-5 text-center max-w-xl w-full">
         <p className="text-gray-400 text-sm">
           generate your own{" "}
-          <a href="/" className="text-blue-600 underline">
+          <Link href="/" className="text-blue-600 underline">
             here
-          </a>
+          </Link>
         </p>
       </footer>
     </div>

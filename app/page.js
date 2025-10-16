@@ -1,12 +1,10 @@
-"use client";
-
-import Contact from "@/components/Contact";
-import Form from "@/components/Form";
-import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import PageContent from "@/components/PageContent";
 
 export default function Page() {
-  const searchParams = useSearchParams();
-  const hasData = searchParams.get("data");
-
-  return hasData ? <Contact /> : <Form />;
+  return (
+    <Suspense>
+      <PageContent />
+    </Suspense>
+  );
 }
