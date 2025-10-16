@@ -46,7 +46,7 @@ export default function Contact() {
 
     // Only access window on client-side
     if (typeof window !== "undefined") {
-      return `${window.location.href}/?data=${encoded}`;
+      return `${window.location.href}?data=${encoded}`;
     } else {
       // Fallback if somehow server-side
       return `/?data=${encoded}`;
