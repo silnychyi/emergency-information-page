@@ -11,10 +11,6 @@ export default function Contact() {
   const [bloodType, setBloodType] = useState("");
   const [medicalNotes, setMedicalNotes] = useState("");
   const [contacts, setContacts] = useState("");
-  const [trustedName, setTrustedName] = useState("");
-  const [trustedPhone, setTrustedPhone] = useState("");
-  const [trustedRelation, setTrustedRelation] = useState("");
-  const [trustedNotes, setTrustedNotes] = useState("");
 
   const generateURL = () => {
     const data = {
@@ -34,12 +30,6 @@ export default function Contact() {
         }
         return { name: c.trim(), phone: "" };
       }),
-      trustedPerson: {
-        name: trustedName,
-        phone: trustedPhone,
-        relation: trustedRelation,
-        notes: trustedNotes,
-      },
     };
 
     const encoded = encodeURIComponent(btoa(JSON.stringify(data)));
@@ -64,7 +54,7 @@ export default function Contact() {
     <div className="font-sans p-5 bg-gray-100 min-h-screen flex justify-center">
       <main className="max-w-xl w-full bg-white p-6 rounded-lg shadow space-y-6">
         <h1 className="font-bold text-center text-red-600">
-          ICE Page Generator
+          Emergency Information Page Generator
         </h1>
 
         {/* Personal Info */}
@@ -127,35 +117,6 @@ export default function Contact() {
             value={contacts}
             onChange={(e) => setContacts(e.target.value)}
             placeholder="Format: Name (+Phone), separate multiple with commas"
-          />
-        </section>
-
-        {/* Trusted Person */}
-        <section className="space-y-2">
-          <h2 className="font-bold">Trusted Document Person</h2>
-          <input
-            className="w-full p-2 border border-gray-400 rounded"
-            value={trustedName}
-            onChange={(e) => setTrustedName(e.target.value)}
-            placeholder="Full Name"
-          />
-          <input
-            className="w-full p-2 border border-gray-400 rounded"
-            value={trustedPhone}
-            onChange={(e) => setTrustedPhone(e.target.value)}
-            placeholder="Phone"
-          />
-          <input
-            className="w-full p-2 border border-gray-400 rounded"
-            value={trustedRelation}
-            onChange={(e) => setTrustedRelation(e.target.value)}
-            placeholder="Relation"
-          />
-          <textarea
-            className="w-full p-2 border border-gray-400 rounded"
-            value={trustedNotes}
-            onChange={(e) => setTrustedNotes(e.target.value)}
-            placeholder="Notes"
           />
         </section>
 

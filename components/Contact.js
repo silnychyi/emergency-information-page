@@ -20,6 +20,15 @@ export default function Contact() {
     return age >= 0 ? age : 0;
   };
 
+  const formatBirthdate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    });
+  };
+
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
@@ -48,8 +57,7 @@ export default function Contact() {
 
   if (userData === null) return null;
 
-  const { name, birthdate, languages, medicalInfo, contacts, trustedPerson } =
-    userData;
+  const { name, birthdate, languages, medicalInfo, contacts } = userData;
 
   return (
     <div className="font-sans flex flex-col items-center p-5 bg-gray-100 min-h-screen gap-8">
@@ -63,7 +71,7 @@ export default function Contact() {
         <div className="p-5 bg-white text-black rounded-lg shadow">
           <h2 className="font-bold mb-2">Personal Information</h2>
           <p>Full Name: {name}</p>
-          <p>Birthdate: {birthdate}</p>
+          <p>Birthdate: {formatBirthdate(birthdate)}</p>
           <p>Age: {calculateAge(new Date(birthdate))}</p>
           <p>Languages: {languages.join(", ")}</p>
         </div>
@@ -96,15 +104,6 @@ export default function Contact() {
             </ul>
           </div>
         )}
-
-        {/* Trusted Person / Legal */}
-        <div className="p-5 bg-white text-black rounded-lg shadow">
-          <h2 className="font-bold mb-2">Trusted Document Person</h2>
-          <p>Full Name: {trustedPerson.name}</p>
-          <p>Phone: {trustedPerson.phone}</p>
-          <p>Relation: {trustedPerson.relation}</p>
-          <p>Notes: {trustedPerson.notes}</p>
-        </div>
 
         {/* Emergency Call Button */}
         <div className="text-center">
