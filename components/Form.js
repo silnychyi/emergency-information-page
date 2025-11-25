@@ -108,13 +108,7 @@ export default function Contact() {
 
     const encoded = encodeURIComponent(btoa(JSON.stringify(data)));
 
-    // Only access window on client-side
-    if (typeof window !== "undefined") {
-      return `${window.location.href}?data=${encoded}`;
-    } else {
-      // Fallback if somehow server-side
-      return `/?data=${encoded}`;
-    }
+    return `${window.location.origin}${window.location.pathname}?data=${encoded}`;
   };
 
   const onClickGenerate = (e) => {
